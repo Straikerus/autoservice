@@ -1,0 +1,19 @@
+{% load static %}
+<html>
+    <head>
+        <title>Автосервис</title>
+        <link rel="stylesheet" href="{% static 'plugins/bootstrap4/bootstrap.min.css' %}">
+        {% block extend_css %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+        {% endblock %}
+        
+        <script src="{% static 'plugins/jquery/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'plugins/bootstrap4/bootstrap.min.js' %}"></script>
+        
+        {% block extend_js %}
+        {% endblock %}
+    </body>
+</html>

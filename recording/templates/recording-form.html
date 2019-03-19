@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extend_css %}
+<link rel="stylesheet" href="{% static 'plugins/bootstrap-datepicker/bootstrap-datepicker.min.css' %}">
+{{ form.media }}
+{% endblock %}
+
+{% block content %}
+<form method='POST'> {% csrf_token %}
+    {{ form.as_p }}
+    <p>
+        <label for='datepicker'>Дата записи:</label>
+        <input class='datepicker' id='datepicker' data-date-end-date="+59d" data-date-start-date="0d" disabled>
+    </p>
+    <p id="timepicker-block" style="display: none">
+        <label for='timepicker'>Время записи:</label>
+        <select id='timepicker'></select>
+    </p>
+    <input type='submit' value='Записаться'>
+</form>
+{% endblock %}
+
+{% block extend_js %}
+<script>
+    var getUnavailableDaysUrl = '{% url 'get-unallowed-days' %}';
+    var getAvailableTimeUrl = '{% url 'get-allowed-time' %}';
+</script>
+<script src="{% static 'plugins/bootstrap-datepicker/bootstrap-datepicker.min.js' %}"></script>
+<script src="{% static 'plugins/bootstrap-datepicker/bootstrap-datepicker.ru.min.js' %}"></script>
+<script src="{% static 'js/datepicker.js' %}"></script>
+{% endblock %}
